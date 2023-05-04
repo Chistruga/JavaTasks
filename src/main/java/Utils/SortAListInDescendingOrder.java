@@ -9,7 +9,7 @@ public class SortAListInDescendingOrder {
             List sortedListInDescendingOrder = listToSortInDescendingOrder;
             Collections.sort(sortedListInDescendingOrder, String.CASE_INSENSITIVE_ORDER);
             Collections.reverse(sortedListInDescendingOrder);
-            System.out.println("Descending sorted list: " + sortedListInDescendingOrder);
+            System.out.print("\nDescending sorted list: " + sortedListInDescendingOrder);
 
         } catch (NullPointerException e) {
             e.getMessage();

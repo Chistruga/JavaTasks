@@ -6,7 +6,7 @@ public class RemoveElementFromTheListByASpecificParameter <T extends Comparable<
     public void removeElementFromTheList(List<T> initialList, String comparableValue) {
         try {
             List<T> anotherList = initialList;
-            System.out.println("Before removing: " + initialList);
+            System.out.print("\nBefore removing: " + initialList);
             anotherList.removeIf(n -> {
                 if (n instanceof String) {
                     return ((String) n).contains(comparableValue);
@@ -14,7 +14,7 @@ public class RemoveElementFromTheListByASpecificParameter <T extends Comparable<
                     return n.toString().contains(comparableValue);
                 }
             });
-            System.out.println("After removing: " + anotherList);
+            System.out.print("\nAfter removing: " + anotherList);
         } catch (NullPointerException e) {
             System.out.println(e);
         }

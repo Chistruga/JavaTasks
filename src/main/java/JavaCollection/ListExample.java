@@ -3,7 +3,7 @@ package JavaCollection;
 import java.util.*;
 
 public class ListExample {
-    public void createList() {
+    public List<String> createAndReturnList() {
         List<String> exampleList = new ArrayList<>();
         exampleList.add("One");
         exampleList.add("Two");
@@ -14,30 +14,37 @@ public class ListExample {
         exampleList.add("PleasePrintMe");
         exampleList.add("DoNotPrint");
 
-        Iterator<String> iterator = exampleList.iterator();
+        return exampleList;
+    }
+
+    public void getListElementsJoined(List<String> list) {
+        Iterator<String> iterator = list.iterator();
 
         System.out.print("Joined List Elements are: ");
         while (iterator.hasNext()) {
             System.out.print(iterator.next());
         }
+    }
 
+    public void reverseList(List<String> listToBeReversed) {
         System.out.print("\nReversed List Elements:");
-        Collections.reverse(exampleList);
-        for (String listElements : exampleList) {
+        Collections.reverse(listToBeReversed);
+        for (String listElements : listToBeReversed) {
             System.out.print(" " + listElements);
         }
+    }
 
-        Collections.reverse(exampleList);
-        System.out.println("\nElement Two has index: " + exampleList.indexOf("Two"));
+    public void displayElementWithIndexTwo(List<String> listToBeCheckedForIndex) {
+        System.out.print("\nElement Two has index: " + listToBeCheckedForIndex.indexOf("Two"));
+    }
 
-        List<String> anotherExampleList = new ArrayList<>();
-        anotherExampleList.add("value1");
-        anotherExampleList.add("value2");
+    public void addAListToAnotherOne(List<String> defaultList) {
+        List<String> listToBeMerged = new ArrayList<>();
+        listToBeMerged.add("value1");
+        listToBeMerged.add("value2");
 
-        exampleList.addAll(anotherExampleList);
-        System.out.println("New List is: " + exampleList);
-
-        printList(exampleList);
+        defaultList.addAll(listToBeMerged);
+        System.out.print("\nNew List is: " + defaultList);
     }
 
     public void printList(List<String> inputList) {

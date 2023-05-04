@@ -4,27 +4,35 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 public class HashSetExample {
-    public void createHashSet() {
-        long multipliedEvenSetElements = 1;
 
+    private long multipliedEvenSetElements = 1;
+
+    public HashSet<Integer> createAndReturnHashSet(){
         HashSet<Integer> exampleSet = new HashSet<>();
         for (int i = 0; i <= 10; i++) {
             exampleSet.add(i);
         }
+        return exampleSet;
+    }
 
-        System.out.println("\n\nHashSet size is: " + exampleSet.size());
+    public void determineHashSetSize(HashSet<Integer> hashSet){
+        System.out.print("\n\nHashSet size is: " + hashSet.size());
+    }
 
-        System.out.print("HashSet elements are:");
-        Iterator<Integer> iterator = exampleSet.iterator();
+    public void iterateHashSetElements(HashSet<Integer> hashSet){
+        System.out.print("\nHashSet elements are:");
+        Iterator<Integer> iterator = hashSet.iterator();
         while (iterator.hasNext()) {
             System.out.print(" " + iterator.next());
         }
+    }
 
-        for (Integer element : exampleSet) {
+    public void determineTotalMultipliedElements(HashSet<Integer> hashSet){
+        for (Integer element : hashSet) {
             if (element % 2 == 0 && element != 0) {
                 multipliedEvenSetElements *= element;
             }
         }
-        System.out.println("\nTotal Multiplied Even elements is: " + multipliedEvenSetElements);
+        System.out.print("\nTotal Multiplied Even elements is: " + multipliedEvenSetElements);
     }
 }
