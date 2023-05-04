@@ -4,7 +4,11 @@ import Utils.FiguresWithoutSides;
 
 public class Circle implements FiguresWithoutSides {
     private String name = "Circle";
-    private double radius = 5;
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
 
     public double getRadius() {
         return radius;
@@ -24,18 +28,18 @@ public class Circle implements FiguresWithoutSides {
 
     @Override
     public void displayFigureName() {
-        System.out.println("Figure is a " + getName());
+        System.out.print("\nFigure is a " + getName());
     }
 
     @Override
     public void calculateFigureArea() {
         double area = PI * radius * radius;
-        System.out.println("Circle Area is " + area);
+        System.out.print("\nCircle Area is " + area);
     }
 
     @Override
     public void calculateFigurePerimeter() {
         double perimeter = 2 * PI * radius;
-        System.out.println("Circle Perimeter is " + perimeter);
+        System.out.print("\nCircle Perimeter is " + perimeter);
     }
 }

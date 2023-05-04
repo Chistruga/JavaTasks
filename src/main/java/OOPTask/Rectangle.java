@@ -39,23 +39,23 @@ public class Rectangle extends FiguresWithSides {
 
     @Override
     public void showFigureName() {
-        System.out.println("Figure is a " + getName());
+        System.out.print("\nFigure is a " + getName());
     }
 
     @Override
     public void calculateFigureArea() {
         int area = length * width;
-        System.out.println("Rectangle Area is " + area);
+        System.out.print("\nRectangle Area is " + area);
     }
 
     @Override
     public void calculateFigurePerimeter() {
         int perimeter = (2 * length) + (2 * width);
-        System.out.println("Rectangle Perimeter is " + perimeter);
+        System.out.print("\nRectangle Perimeter is " + perimeter);
     }
 
     @Override
     public void displaySideNumbers() {
-        System.out.println("Rectangle has " + getNUMBER_OF_SIDES() + " sides");
+        System.out.print("\nRectangle has " + getNUMBER_OF_SIDES() + " sides");
     }
 }

@@ -3,6 +3,7 @@ package Main;
 import DBTask.CreateDBTable;
 import DBTask.DataBaseTask;
 import DBTask.ReadFileContent;
+import JavaTaskSynamicSizeArray.QueriesForDynamicArray;
 import ListAndBookTask.BookTasks;
 import JavaCollection.HashMapExample;
 import JavaCollection.HashSetExample;
@@ -13,14 +14,20 @@ import ListAndBookTask.ListOfRandomlyGeneratedAlphanumericStrings;
 import OOPTask.Circle;
 import OOPTask.Rectangle;
 import OOPTask.Square;
+import Utils.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws SQLException, IOException {
+        ReadStringFromConsole readStringFromConsole = new ReadStringFromConsole();
+        ReadAnArrayFromConsole readAnArrayFromConsole = new ReadAnArrayFromConsole();
+        PrintArrayElements printArrayElements = new PrintArrayElements();
         CheckPalindrome checkPalindrome = new CheckPalindrome();
         BubbleSort bubbleSort = new BubbleSort();
         MagicalSquare magicalSquare = new MagicalSquare();
@@ -36,6 +43,11 @@ public class Main {
         DataBaseTask dataBaseTask = new DataBaseTask();
         ReadFileContent readFileContent = new ReadFileContent();
         CreateDBTable createDBTable = new CreateDBTable();
+        ReadDynamicSizeArray readDynamicSizeArray = new ReadDynamicSizeArray();
+        QueriesForDynamicArray queriesForDynamicArray = new QueriesForDynamicArray();
+        GenerateRandomAlphanumericString generateRandomAlphanumericString = new GenerateRandomAlphanumericString();
+        SortAListInDescendingOrder sortAListInDescendingOrder = new SortAListInDescendingOrder();
+        RemoveElementFromTheListByASpecificParameter removeElementFromTheList = new RemoveElementFromTheListByASpecificParameter();
 
         System.out.println("1. Check if a string of characters is a Palindrome\n" +
                 "2. Inverse the elements of an array\n" +
@@ -56,22 +68,27 @@ public class Main {
 
             switch (number) {
                 case 1:
-                    checkPalindrome.checkIfAStringIsPalindrome();
+                    String givenStringAtConsole = readStringFromConsole.readStringFromConsole();
+                    checkPalindrome.checkIfAStringIsPalindrome(givenStringAtConsole);
                     break;
                 case 2:
-                    reverseArrayOfFloats.reverseAnArray();
+                    double[] arrayToReverse = readAnArrayFromConsole.readAndPrintDoubleArrayFromConsole();
+                    printArrayElements.printDoubleArray(reverseArrayOfFloats.reverseAnArray(arrayToReverse));
                     break;
                 case 3:
-                    bubbleSort.sortElementsInArrayBubbleSort();
+                    int[] givenArray = readAnArrayFromConsole.readAndPrintIntArrayFromConsole();
+                    printArrayElements.printIntArray(bubbleSort.sortElementsInArrayBubbleSort(givenArray));
                     break;
                 case 4:
-                    sumOfOddAndEvenNumbers.findSumOfOddElementsAndTotalNumberOfEvenElements();
+                    int[] arrayToBeChecked = readAnArrayFromConsole.readAndPrintIntArrayFromConsole();
+                    System.out.println("\nSum of ODD elements is: " + sumOfOddAndEvenNumbers.findSumOfOddElements(arrayToBeChecked));
+                    System.out.println("Total Number of EVEN elements is: " + sumOfOddAndEvenNumbers.findTotalNumberOfEvenElements(arrayToBeChecked));
                     break;
                 case 5:
                     magicalSquare.readMatrixFromConsoleAndSeeIfItIsMagic();
                     break;
                 case 6:
-                    Circle circle = new Circle();
+                    Circle circle = new Circle(5);
                     circle.displayFigureName();
                     circle.calculateFigureArea();
                     circle.calculateFigurePerimeter();
@@ -93,16 +110,33 @@ public class Main {
                     rectangle.calculateFigurePerimeter();
                     break;
                 case 7:
-                    dynamicSizeArrayQueries.getElementsOfDynamicArrayUsingQueries();
+                    ArrayList<ArrayList<Integer>> arrayList = readDynamicSizeArray.readDynamicArray();
+                    ArrayList<QueryHelper<Integer, Integer>> pairList = queriesForDynamicArray.readQueriesFromConsole();
+                    dynamicSizeArrayQueries.displayElementFromArrayBasedOnGivenQuery(arrayList, pairList);
                     break;
                 case 8:
-                    listExample.createList();
-                    hashSetExample.createHashSet();
-                    hashMapExample.createHashMap();
+                    listExample.getListElementsJoined(listExample.createAndReturnList());
+                    listExample.reverseList(listExample.createAndReturnList());
+                    listExample.displayElementWithIndexTwo(listExample.createAndReturnList());
+                    listExample.addAListToAnotherOne(listExample.createAndReturnList());
+                    listExample.printList(listExample.createAndReturnList());
+                    hashSetExample.determineHashSetSize(hashSetExample.createAndReturnHashSet());
+                    hashSetExample.iterateHashSetElements(hashSetExample.createAndReturnHashSet());
+                    hashSetExample.determineTotalMultipliedElements(hashSetExample.createAndReturnHashSet());
+                    hashMapExample.displayHashMapKeys();
+                    hashMapExample.displayHashMapValues();
+                    hashMapExample.setValueForSecondKey(hashMapExample.createAndReturnHashMap());
+                    hashMapExample.removeValueOfThirdKey(hashMapExample.createAndReturnHashMap());
+                    hashMapExample.printMapValues(hashMapExample.createAndReturnHashMap());
                     break;
                 case 9:
-                    list.performActionsOnGeneratedString();
-                    bookExample.BookExample();
+                    List listWithRandomlyCreatedAlphaNumerics = list.addAStringToList();
+                    sortAListInDescendingOrder.sortInDescendingOrder(listWithRandomlyCreatedAlphaNumerics);
+                    removeElementFromTheList.removeElementFromTheList(listWithRandomlyCreatedAlphaNumerics, "les");
+                    bookExample.getfirstSpanishBook();
+                    bookExample.sortListOfBooksByAuthor();
+                    bookExample.getTheBookWithMaximumPagesByTitle();
+                    bookExample.getAListOfBooksThatHaveMoreThan200Pages();
                     break;
                 case 10:
                     createDBTable.checkAndCreateDBWithTablesAndData();

@@ -54,7 +54,7 @@ public class ReadFileContent {
         br.close();
 
         for (Map.Entry<String, List<Long>> element : map.entrySet()) {
-            System.out.println("Word " + element.getKey() + " was found " + element.getValue().size() + " times on lines: " + element.getValue());
+            System.out.print("\nWord " + element.getKey() + " was found " + element.getValue().size() + " times on lines: " + element.getValue());
         }
 
     }

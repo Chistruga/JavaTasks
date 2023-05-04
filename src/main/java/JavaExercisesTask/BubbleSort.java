@@ -5,21 +5,16 @@ import Utils.ReadAnArrayFromConsole;
 
 public class BubbleSort {
     private int temporaryElement = 0;
-
-    public void sortElementsInArrayBubbleSort() {
-        ReadAnArrayFromConsole readAnArrayFromConsole = new ReadAnArrayFromConsole();
-        int[] initialArray = readAnArrayFromConsole.readAndPrintIntArrayFromConsole();
-        for (int i = 0; i < readAnArrayFromConsole.getNumberOfElementsInArray(); i++) {
-            for (int j = 1; j < (readAnArrayFromConsole.getNumberOfElementsInArray() - i); j++) {
-                if (initialArray[j - 1] > initialArray[j]) {
-                    temporaryElement = initialArray[j - 1];
-                    initialArray[j - 1] = initialArray[j];
-                    initialArray[j] = temporaryElement;
+    public int[] sortElementsInArrayBubbleSort(int[] arrayToSort) {
+        for (int i = 0; i < arrayToSort.length; i++) {
+            for (int j = 1; j < (arrayToSort.length - i); j++) {
+                if (arrayToSort[j - 1] > arrayToSort[j]) {
+                    temporaryElement = arrayToSort[j - 1];
+                    arrayToSort[j - 1] = arrayToSort[j];
+                    arrayToSort[j] = temporaryElement;
                 }
             }
         }
-
-        System.out.println("\nArray after Bubble sort: ");
-        PrintArrayElements.printIntArray(initialArray);
+    return arrayToSort;
     }
 }

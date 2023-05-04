@@ -28,23 +28,23 @@ public class Square extends FiguresWithSides {
 
     @Override
     public void showFigureName() {
-        System.out.println("Figure is a " + getName());
+        System.out.print("\nFigure is a " + getName());
     }
 
     @Override
     public void calculateFigureArea() {
         int area = sideLength * sideLength;
-        System.out.println("Square Area is " + area);
+        System.out.print("\nSquare Area is " + area);
     }
 
     @Override
     public void calculateFigurePerimeter() {
         int perimeter = 2 * sideLength;
-        System.out.println("Square Perimeter is " + perimeter);
+        System.out.print("\nSquare Perimeter is " + perimeter);
     }
 
     @Override
     public void displaySideNumbers() {
-        System.out.println("Square has " + getNUMBER_OF_SIDES() + " sides");
+        System.out.print("\nSquare has " + getNUMBER_OF_SIDES() + " sides");
     }
 }
